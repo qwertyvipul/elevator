@@ -8,5 +8,4 @@ Open to your feedback and suggestions.
 
 Special thanks to - Robert Lafore for his amazing book <i>Object-Oriented Programming in C++.</i> It helped me learn a lot without which it would have been quite a task to build this application.
 
-* A Glimpse
 <img src="screenshots/shot-1.png"/>
