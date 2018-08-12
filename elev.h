@@ -10,6 +10,8 @@
 #include<stdlib.h> //for itoa()
 #include<process.h> //for exit()
 
+
+
 using namespace std;
 
 enum Direction{UP, DOWN, STOP};
