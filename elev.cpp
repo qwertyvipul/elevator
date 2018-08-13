@@ -4,35 +4,47 @@
 #include"elev.h"
 
 //////////////////////////////////////////////////////////
-Building::Building(){
-    char ustring[BUFF_LENGTH]; //string for floor numbers
+/*
+When creating the building class
+*/
+Building::Building(){ //Cunstructor for the building class
+    char ustring[BUFF_LENGTH]; //string for floor numbers - BUFF_LENGTH = 80 in this project
     init_graphics(); //initialize graphics
     clear_screen(); //clear screen
-    num_cars = 0;
+    num_cars = 0; //initially no cars exist
 
-    //make elevators
+    //make elevators/cars - 0 to NUM_CARS-1
     for(int k=0; k<NUM_CARS; k++){
-        car_list[k] = new Elevator(this, num_cars);
-        num_cars++;
+        car_list[k] = new Elevator(this, num_cars); //elevator constructor for this building and the car number
+        num_cars++; //for the next car
     }
 
-    //make floors
+    //make floors - 0 to NUM_FLOORS-1
     for(int j=0; j<NUM_FLOORS; j++){
-        set_cursor_pos(3, NUM_FLOORS-j);
-        itoa(j+1, ustring, 10);
-        cout<<setw(3)<<ustring;
-        floor_request[UP][j] = false;
-        floor_request[DOWN][j] = false;
+        set_cursor_pos(3, NUM_FLOORS-j); //the top - left conrner is origin and right and down is positive
+        itoa(j+1, ustring, 10); //add the floor number in buffer string
+        cout<<setw(3)<<ustring; //print the floor position at the set position
+        floor_request[UP][j] = false; //intially there's no one on the floor
+        floor_request[DOWN][j] = false; //neither up nor down request
     }
 }
 
+/*
+Destructor for the building class
+*/
 Building::~Building(){
     for(int k=0; k<NUM_CARS; k++){
-        delete car_list[k];
+        delete car_list[k]; //delete all the cars
     }
 }
 
 //master time tick
+/*
+To see where it is used do visit the main.cpp file
+```markdown
+Hello
+```
+*/
 void Building::master_tick(){
     int j;
     show_floor_requests();
